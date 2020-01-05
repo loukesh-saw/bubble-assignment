@@ -1,0 +1,179 @@
+
+<!-- 
+   *
+   *    Bubble_FullStackDevloper_Assignment
+   *    ----------------------------------
+   *
+   *   Author:
+   *   Lokesh Kumar Saw 
+   *   8670lokesh@gmail.com
+   *   8016593926
+   *
+   *-->
+
+
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+    <title>FullStackDevloper_Assignment | Bubble</title>   
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <!-- <link rel="icon" href="img/icon.png"> -->
+    <script type="text/javascript" src="app.js"></script>
+
+</head>  
+<body ng-app="MyApp">
+	<div class="col-12" ng-controller="ctrl">
+		<div>
+			<div class="bg-blue header">
+				<div class="m0 p0 pull-left">
+					<ul>
+						<li class="active"><a href="#">Cricket Dashboard</a></li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="m0 p20">
+				<h3 class="m0 p0 pull-right cursor" ng-click="getAllMatches()">All Matches</h3>
+			</div>
+			<br>
+			<div class="p20 bg-white">
+				<h1 style="color: #1118">
+					{{heading}}
+				</h1>
+				<div>
+					<div ng-show="showAllMatches">
+						<table width="80%">
+						<tr>
+							<th>
+								1<sup>st</sup> Team / ( score )
+							</th>
+							<th>
+								2<sup>nd</sup> Team / ( score )
+							</th>
+							<th>
+								Venue
+							</th>
+							<th>
+								Date
+							</th>
+						</tr>
+						<tr class="cursor" ng-click="getMatchDetail(match)" ng-repeat="match in AllMatches">
+							<td>
+								{{match.team_name1}} / <span class="bg-orange small_circle">{{match.team_name1_score}}</span>
+							</td>
+							<td>
+								{{match.team_name2}} / <span class="bg-orange small_circle">{{match.team_name2_score}}</span>
+							</td>
+							<td>
+								{{match.venue}}
+							</td>
+							<td>
+								{{match.date_of_match}}
+							</td>
+						</tr>
+					</table>
+					</div>
+					<div ng-show="showPlayer">
+						<table width="50%">
+						<tr>
+							<th>
+								Name
+							</th>
+							<th>
+								Team
+							</th>
+							<th>
+								Run Rate
+							</th>
+						</tr>
+						<tr>
+							<td>
+								{{Player.name}}
+							</td>
+							<td>
+								{{Player.team_name}}
+							</td>
+							<td>
+								{{Player.run_rate}}
+							</td>
+						</tr>
+					</table>
+
+					</div>
+					<div ng-show="showTeam">
+						<table width="60%">
+						<tr>
+							<td>Team:-> {{TeamDetails[0].team_name}}</td>
+						</tr>
+						<tr>
+							<th>
+								Player Name
+							</th>
+							<th>
+								Player Run-Rate
+							</th>
+						</tr>
+						<br>
+						<tr ng-repeat="player in TeamDetails">
+							<td>
+								{{player.name}}
+							</td>
+							<td>
+								{{player.run_rate}}
+							</td>
+						</tr>
+					</table>
+
+					</div>
+					<div ng-show="showMatch">
+						<table width="100%">
+						<tr>
+							<td class="cursor" ng-click="getTeamDetail(selectedMatch.team_name1)">
+								{{selectedMatch.team_name1}} / 
+								<span class="bg-orange small_circle">{{selectedMatch.team_name1_score}}</span>
+							</td>
+							<td class="cursor" ng-click="getTeamDetail(selectedMatch.team_name2)">								{{selectedMatch.team_name2}} / 
+								<span class="bg-orange small_circle">{{selectedMatch.team_name2_score}}</span>
+							</td>
+							<td>
+								{{selectedMatch.venue}} / {{selectedMatch.date_of_match}}
+							</td>
+						</tr>
+						</table>
+						<br>
+
+						<span class="row">
+							<table width="40%">
+							<tr ng-repeat="player in TeamData1">
+								<td class="cursor" ng-click="getPlayerDetail(player.id)">
+									{{player.name}}
+								</td>
+							</tr>
+							</table>
+							<table width="40%">
+							<tr ng-repeat="player in TeamData2">
+								<td class="cursor" ng-click="getPlayerDetail(player.id)">
+									{{player.name}}
+								</td>
+							</tr>
+							</table>
+						</span>
+
+					</div>
+				</div>
+				<br><br>
+			</div>
+			<br><br>
+
+		</div>
+	</div>
+
+</body>  
+</html>
+
+
